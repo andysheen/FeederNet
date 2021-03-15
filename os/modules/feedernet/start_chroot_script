@@ -36,7 +36,7 @@ echo "Installing mongodb"
 apt-get install -y mongodb
 
 echo "Installing esptool"
-apt-get install -y python
+apt-get install -y python build-essential python-dev
 curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
 python get-pip.py
 pip install esptool
