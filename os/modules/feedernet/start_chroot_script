@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# FeederNet builder
+# Builds FeederNet and dependencies
+# Written by Mike Vanis
+# GPL V3
+########
+
+
+# Source error handling, leave this in place
+set -x
+set -e
+
+source /common.sh
+install_cleanup_trap
+
+unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
+unpack /filesystem/home/root /root root
+unpack /filesystem/boot /boot
+
+echo "-----------------------------------------"
+echo "$FEEDERNET_VAR"
+apt-get purge -y libreoffice*
+apt-get clean
+apt-get update
+apt-get upgrade -y
+apt-get dist-upgrade -y
+apt-get autoremove -y
+
+echo "Installing node"
+curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
+apt-get install -y nodejs
+node --version
+npm install -g yarn
+
+echo "Installing mongodb"
+apt-get install mongodb
+
+echo "Installing esptool"
+apt-get install -y python
+curl -O https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+pip install esptool
+
+pushd /home/pi
+	pushd FeederNet
+		echo "Installing repo dependencies"
+    yarn config set strict-ssl false
+    yarn install
+
+		echo "Adding services"
+		mv helpers/node.feedernet.service /etc/systemd/system/node.feedernet.service
+	popd
+popd
+
+echo "Enabling services"
+chmod 644 /etc/systemd/system/node.feedernet.service
+systemctl enable node.feedernet.service
+systemctl enable mongodb
+
+unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
+# Unpack root at the end, so files are modified before
+unpack /filesystem/root /

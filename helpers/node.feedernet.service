@@ -1,0 +1,12 @@
+[Unit]
+Description=FeederNet Server
+Requires=mongodb
+
+[Service]
+ExecStart=yarn start
+WorkingDirectory=/home/pi/FeederNet
+Restart=on-failure
+User=pi
+
+[Install]
+WantedBy=multi-user.target
