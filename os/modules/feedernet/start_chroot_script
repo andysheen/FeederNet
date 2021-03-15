@@ -31,7 +31,6 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
 apt-get install -y nodejs
 node --version
 npm --version
-npm install -g yarn
 
 echo "Installing mongodb"
 apt-get install mongodb
@@ -45,8 +44,7 @@ pip install esptool
 pushd /home/pi
 	pushd FeederNet
 		echo "Installing repo dependencies"
-    yarn config set strict-ssl false
-    yarn install
+    npm install
 
 		echo "Adding services"
 		mv helpers/node.feedernet.service /etc/systemd/system/node.feedernet.service
