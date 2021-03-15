@@ -33,7 +33,7 @@ node --version
 npm --version
 
 echo "Installing mongodb"
-apt-get install mongodb
+apt-get install -y mongodb
 
 echo "Installing esptool"
 apt-get install -y python
