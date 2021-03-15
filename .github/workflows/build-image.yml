@@ -37,7 +37,7 @@ jobs:
       run: cd repository/os && ../../CustomPiOS/src/update-custompios-paths
 
     - name: Copy FeederNet to CustomPiOS directory
-      run: cp -r repository /tmp/FeederNet && rm -rf /tmp/FeederNet/os && rm -rf /tmp/FeederNet/acmin-client/node_modules && mv /tmp/FeederNet repository/os/modules/feedernet/filesystem/home/pi/FeederNet && ls repository/os/modules/feedernet/filesystem/home/pi/FeederNet
+      run: cp -r repository /tmp/FeederNet && rm -rf /tmp/FeederNet/os && rm -rf /tmp/FeederNet/admin-client/node_modules && mv /tmp/FeederNet repository/os/modules/feedernet/filesystem/home/pi/FeederNet && ls repository/os/modules/feedernet/filesystem/home/pi/FeederNet
 
     - name: Build Image
       run: sudo modprobe loop && cd repository/os && sudo bash -x ./build_dist
