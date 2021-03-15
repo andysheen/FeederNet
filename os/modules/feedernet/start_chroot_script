@@ -44,7 +44,7 @@ pip install esptool
 pushd /home/pi
 	pushd FeederNet
 		echo "Installing repo dependencies"
-    npm install --unsafe-perm
+    sudo npm install --unsafe-perm
 
 		echo "Adding services"
 		mv helpers/node.feedernet.service /etc/systemd/system/node.feedernet.service
