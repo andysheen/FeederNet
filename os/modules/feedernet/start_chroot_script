@@ -27,8 +27,8 @@ apt-get dist-upgrade -y
 apt-get autoremove -y
 
 echo "Installing node"
-curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
-apt-get install -y nodejs
+curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+sudo apt-get install -y nodejs
 node --version
 npm --version
 
@@ -44,8 +44,7 @@ pip install esptool
 pushd /home/pi
 	pushd FeederNet
 		echo "Installing repo dependencies"
-    sudo npm install --unsafe-perm
-
+    	npm install --unsafe-perm
 		echo "Adding services"
 		mv helpers/node.feedernet.service /etc/systemd/system/node.feedernet.service
 	popd
