@@ -32,9 +32,8 @@ sudo apt-get install -y nodejs
 node --version
 npm --version
 
-sudo npm install -g node-gyp@latest
 sudo npm install -g node-pre-gyp
-sudo npm config set node_gyp /usr/lib/node_modules/node-gyp/bin/node-gyp.js
+sudo npm install -g node-gyp@latest
 
 echo "Installing mongodb"
 apt-get install -y mongodb
