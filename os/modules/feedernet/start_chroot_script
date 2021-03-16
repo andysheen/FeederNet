@@ -33,7 +33,7 @@ node --version
 npm --version
 
 sudo npm install -g node-pre-gyp
-sudo npm install -g node-gyp@latest
+sudo npm install -g node-gyp@6.0.1
 
 echo "Installing mongodb"
 apt-get install -y mongodb
