@@ -31,6 +31,7 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
 sudo apt-get install -y nodejs
 node --version
 npm --version
+npm cache clear --force
 npm install npm -g
 
 sudo npm install -g node-pre-gyp
